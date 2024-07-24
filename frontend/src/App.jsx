@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Login />} />

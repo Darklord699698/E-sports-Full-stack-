@@ -28,8 +28,7 @@ const Header = () => {
         </button>
       </nav>
       <div
-        className={`fixed inset-0 bg-gray-800 bg-opacity-75 transform ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out z-40 md:hidden`}
-        style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)' }}
+        className={`fixed inset-0 bg-gray-900 bg-opacity-90 transform ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out z-40 md:hidden`}
       >
         <div className="flex justify-end p-5">
           <button onClick={toggleSidebar} className="text-white focus:outline-none">
