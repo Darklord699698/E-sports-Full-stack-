@@ -9,7 +9,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between p-5 text-white bg-gray-800">
+    <header className="relative z-50 flex items-center justify-between p-5 text-white bg-gray-800">
       <div className="text-2xl font-bold">GameZone</div>
       <button onClick={toggleSidebar} className="text-white focus:outline-none md:hidden">
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -23,11 +23,14 @@ const Header = () => {
         <Link to="/contact" className="hover:text-gray-400">Contact</Link>
         <Link to="/privacypolicy" className="hover:text-gray-400">PrivacyPolicy</Link>
         <Link to="/settings" className="hover:text-gray-400">Settings</Link>
-        <button class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-bold py-2 px-4 rounded-full shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"><Link to="/login" className="hover:text-gray-400">Login/SignIn</Link></button>
-        
-        
+        <button className="px-4 py-2 font-bold text-white transition duration-300 transform rounded-full shadow-lg bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+          <Link to="/login" className="hover:text-gray-400">Login/SignIn</Link>
+        </button>
       </nav>
-      <div className={`fixed inset-0 bg-gray-800 bg-opacity-75 transform ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out md:hidden`}>
+      <div
+        className={`fixed inset-0 bg-gray-800 bg-opacity-75 transform ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out z-40 md:hidden`}
+        style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)' }}
+      >
         <div className="flex justify-end p-5">
           <button onClick={toggleSidebar} className="text-white focus:outline-none">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +45,9 @@ const Header = () => {
           <Link to="/contact" className="text-lg text-white" onClick={toggleSidebar}>Contact</Link>
           <Link to="/privacypolicy" className="text-lg text-white" onClick={toggleSidebar}>PrivacyPolicy</Link>
           <Link to="/settings" className="text-lg text-white" onClick={toggleSidebar}>Settings</Link>
-          <button class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-bold py-2 px-4 rounded-full shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"><Link to="/login" className="text-lg text-white" onClick={toggleSidebar}>Login/SignIn</Link></button>
+          <button className="px-4 py-2 font-bold text-white transition duration-300 transform rounded-full shadow-lg bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+            <Link to="/login" className="text-lg text-white" onClick={toggleSidebar}>Login/SignIn</Link>
+          </button>
         </nav>
       </div>
     </header>
