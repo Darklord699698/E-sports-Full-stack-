@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { assets } from "../assets/assets.js";
 import Lottie from 'lottie-react';
 import animationData from '../assets/animationData.json'; // Replace with your Lottie animation file
+import './styles.css'; // Import the CSS file with the fade-in animation
 
 const Main = () => {
   const sliderSettings = {
@@ -17,11 +18,11 @@ const Main = () => {
 
   return (
     <main className="flex-grow p-0">
-    <section className="relative flex flex-col items-center justify-center h-screen mb-10 bg-center bg-no-repeat bg-cover md:flex-row md:justify-between" style={{ backgroundImage: "url('https://api.duniagames.co.id/api/content/upload/file/6280776751589773903.jpg')" }}>
+      <section className="relative flex flex-col items-center justify-center h-screen mb-10 bg-center bg-no-repeat bg-cover md:flex-row md:justify-between" style={{ backgroundImage: "url('https://api.duniagames.co.id/api/content/upload/file/6280776751589773903.jpg')" }}>
         <div className="flex items-center justify-center w-full p-5 md:w-1/2 md:p-10">
           <div className="relative z-10 max-w-md p-10 mx-auto text-center text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-            <h1 className="mb-4 text-5xl font-bold text-shadow-lg">Welcome to the Gaming World</h1>
-            <p className="text-lg">Dive into a universe where every pixel comes to life and adventures await at every turn. Immerse yourself in our handpicked selection of games, each offering an exhilarating experience with breathtaking graphics and heart-pounding action.</p>
+            <h1 className="mb-4 text-4xl font-bold fade-in-text">Welcome to the Gaming World</h1>
+            <p>Dive into a universe where every pixel comes to life and adventures await at every turn. Immerse yourself in our handpicked selection of games, each offering an exhilarating experience with breathtaking graphics and heart-pounding action.</p>
           </div>
         </div>
         <div className="flex items-center justify-center w-full p-5 md:w-1/2 md:p-10">
