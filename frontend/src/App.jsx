@@ -9,6 +9,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy';
 
+
 const App = () => {
   return (
     <Router>
