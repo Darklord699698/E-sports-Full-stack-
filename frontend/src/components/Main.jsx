@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -6,14 +6,26 @@ import { assets } from "../assets/assets.js";
 import Lottie from 'lottie-react';
 import animationData from '../assets/animationData.json'; // Replace with your Lottie animation file
 import './styles.css'; // Import the CSS file with the fade-in animation
+import ContactForm from './ContactForm.jsx';
+
+
 
 const Main = () => {
+  const videoRefs = useRef([]);
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    beforeChange: (current, next) => {
+      // Pause all videos before changing slides
+      videoRefs.current.forEach((video) => {
+        if (video && !video.paused) {
+          video.pause();
+        }
+      });
+    },
   };
 
   return (
@@ -87,19 +99,19 @@ const Main = () => {
           <h2 className="mb-5 text-3xl text-center">Game Highlights</h2>
           <Slider {...sliderSettings} className="w-full">
             <div>
-              <video controls className="w-full h-auto rounded-lg">
+              <video ref={el => videoRefs.current[0] = el} controls className="w-full h-auto rounded-lg" autoPlay loop>
                 <source src={assets.video1} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
             <div>
-              <video controls className="w-full h-auto rounded-lg">
+              <video ref={el => videoRefs.current[1] = el} controls className="w-full h-auto rounded-lg" autoPlay loop>
                 <source src={assets.video2} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
             <div>
-              <video controls className="w-full h-auto rounded-lg">
+              <video ref={el => videoRefs.current[2] = el} controls className="w-full h-auto rounded-lg" autoPlay loop>
                 <source src={assets.video3} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -107,6 +119,11 @@ const Main = () => {
             {/* Add more slides as needed */}
           </Slider>
         </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="flex justify-center mt-10">
+        <ContactForm />
       </section>
     </main>
   );
