@@ -43,15 +43,12 @@ const Header = () => {
       {/* Desktop Navigation */}
       <nav className="hidden space-x-4 md:flex">
         <Link to="/" className="hover:text-gray-400">Home</Link>
-        <Link to="/games" className="hover:text-gray-400">Games</Link>
         <Link to="/yourgames" className="hover:text-gray-400">YourGames</Link>
-        <Link to="/your-participation" className="hover:text-gray-400">YourParticipation</Link>
         <Link to="/rewards" className="hover:text-gray-400">Rewards</Link>
-        <Link to="/achievements"className="hover:text-gray-400">Achievements</Link>
+        <Link to="/achievements" className="hover:text-gray-400">Achievements</Link>
         <Link to="/about" className="hover:text-gray-400">About</Link>
         <Link to="/contact" className="hover:text-gray-400">Contact</Link>
         <Link to="/privacypolicy" className="hover:text-gray-400">PrivacyPolicy</Link>
-        <Link to="/settings" className="hover:text-gray-400">Settings</Link>
         <button className="px-4 py-2 font-bold text-white transition duration-300 transform rounded-full shadow-lg bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
           <Link to="/login" className="hover:text-gray-400">Login/SignIn</Link>
         </button>
@@ -94,8 +91,9 @@ const Header = () => {
           </button>
         </div>
         <nav className="flex flex-col items-center mt-10 space-y-4">
+        <Link to="/" className="text-lg text-white" onClick={toggleProfileSidebar}>Home</Link>
           <Link to="/yourgames" className="text-lg text-white" onClick={toggleProfileSidebar}>Your Games</Link>
-          <Link to="/your-participation" className="text-lg text-white" onClick={toggleProfileSidebar}>Your Participation</Link>
+          <Link to="/yourparticipation" className="text-lg text-white" onClick={toggleProfileSidebar}>YourParticipation</Link>
           <Link to="/rewards" className="text-lg text-white" onClick={toggleProfileSidebar}>Rewards</Link>
           <Link to="/achievements" className="text-lg text-white" onClick={toggleProfileSidebar}>Achievements</Link>
           <button className="px-4 py-2 font-bold text-white transition duration-300 transform rounded-full shadow-lg bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
