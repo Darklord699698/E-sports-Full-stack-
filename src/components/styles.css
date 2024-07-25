@@ -1,0 +1,16 @@
+/* styles.css or equivalent CSS file */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px); /* Optional: Slide in from below */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in-text {
+    animation: fadeIn 2s ease-out forwards; /* 'forwards' keeps the final state of the animation */
+    opacity: 1; /* Ensure it stays visible after animation */
+  }
