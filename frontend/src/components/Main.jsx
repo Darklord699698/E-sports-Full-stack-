@@ -6,7 +6,7 @@ import { assets } from "../assets/assets.js";
 import Lottie from 'lottie-react';
 import animationData from '../assets/animationData.json'; // Replace with your Lottie animation file
 import './styles.css'; // Import the CSS file with the fade-in animation
-import ContactForm from './ContactForm.jsx';
+import ContactForm from './ContactForm.jsx';//contact form jsx file imported
 
 
 
