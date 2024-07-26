@@ -138,7 +138,7 @@ const Main = () => {
         </section>
 
 {/* Contact Form */}
-<section className="flex justify-center mt-10">
+<section className="flex justify-center mt-10 bg-indigo-950">
   <ContactForm />
 </section>
 </main>

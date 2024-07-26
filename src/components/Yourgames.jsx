@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import YouTube from 'react-youtube';
+import Lottie from 'react-lottie';
+import animationData6 from "../assets/animationData6.json"; // Replace with your Lottie animation file
 
 // Custom styles for the modal
 const customStyles = {
@@ -75,6 +77,15 @@ const YourGames = () => {
     },
   };
 
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData6,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   return (
     <div className="min-h-screen p-6 text-white bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
       <header className="mb-4 text-2xl font-bold">
@@ -129,6 +140,11 @@ const YourGames = () => {
           </Modal>
         )}
       </main>
+      <footer className="mt-10">
+        <div className="text-center">
+          <Lottie options={lottieOptions} height={400} width={400} />
+        </div>
+      </footer>
     </div>
   );
 };
