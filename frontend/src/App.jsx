@@ -14,7 +14,6 @@ import Achievements from './components/Achievements';
 
 
 const App = () => {
-
   return (
     <Router>
       <Header />
@@ -29,6 +28,7 @@ const App = () => {
           <Route path="/yourgames" element={<YourGames/>} />
           <Route path="/rewards" element={<Rewards/>} /> {/* Add this line */}
           <Route path="/achievements" element={<Achievements/>} /> {/* Add this line */}
+          
         </Routes>
       </main>
       <Footer />

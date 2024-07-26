@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
-  const [isLogin, setIsLogin] = useState(true); // State to toggle between login and sign-up forms
-  const [isChecked, setIsChecked] = useState(false); // State to manage checkbox
-  const navigate = useNavigate(); // Hook to access the navigate function
+  const [isLogin, setIsLogin] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleClose = () => {
     navigate('/'); // Redirect to the home page
@@ -12,16 +16,51 @@ const Auth = () => {
 
   const handleSwitchForm = () => {
     setIsLogin(!isLogin); // Toggle between login and sign-up
+    setMessage(''); // Clear any previous messages
   };
 
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked); // Update checkbox state
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const url = isLogin ? 'http://localhost:4000/api/login' : 'http://localhost:4000/api/register';
+    const body = isLogin ? { email, password } : { name, email, password };
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+      setMessage(data.message);
+
+      if (response.ok) {
+        if (isLogin) {
+          // Save user info to local storage
+          localStorage.setItem('user', JSON.stringify({ name: data.name })); // Adjust according to API response
+          // Redirect to home page
+          navigate('/'); // Redirect to home page
+        } else {
+          // Handle successful registration, switch to login form
+          setIsLogin(true);
+        }
+      }
+    } catch (error) {
+      setMessage('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <div
       className="relative flex items-center justify-center min-h-screen bg-center bg-cover"
-      style={{ backgroundImage: 'url("https://cdn.oneesports.gg/cdn-data/2024/04/Anime_OnePiece_Zoro_Sword_Attack.jpg")' }} // Background image
+      style={{ backgroundImage: 'url("https://cdn.oneesports.gg/cdn-data/2024/04/Anime_OnePiece_Zoro_Sword_Attack.jpg")' }}
     >
       <button
         onClick={handleClose}
@@ -35,7 +74,7 @@ const Auth = () => {
         {isLogin ? (
           <div>
             <h2 className="mb-6 text-2xl font-bold text-gray-800">Login</h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-gray-700">Email</label>
                 <input
@@ -43,6 +82,8 @@ const Auth = () => {
                   id="email"
                   className="w-full p-2 mt-1 border border-gray-300 rounded-lg"
                   placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -53,6 +94,8 @@ const Auth = () => {
                   id="password"
                   className="w-full p-2 mt-1 border border-gray-300 rounded-lg"
                   placeholder="Your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
@@ -89,7 +132,7 @@ const Auth = () => {
         ) : (
           <div>
             <h2 className="mb-6 text-2xl font-bold text-gray-800">Sign Up</h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-gray-700">Name</label>
                 <input
@@ -97,6 +140,8 @@ const Auth = () => {
                   id="name"
                   className="w-full p-2 mt-1 border border-gray-300 rounded-lg"
                   placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
@@ -107,6 +152,8 @@ const Auth = () => {
                   id="email"
                   className="w-full p-2 mt-1 border border-gray-300 rounded-lg"
                   placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -117,6 +164,8 @@ const Auth = () => {
                   id="password"
                   className="w-full p-2 mt-1 border border-gray-300 rounded-lg"
                   placeholder="Your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
@@ -151,6 +200,7 @@ const Auth = () => {
             </p>
           </div>
         )}
+        {message && <p className="mt-4 text-center text-red-500">{message}</p>}
       </div>
     </div>
   );
