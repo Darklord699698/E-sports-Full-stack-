@@ -6,9 +6,7 @@ import { assets } from "../assets/assets.js";
 import Lottie from 'lottie-react';
 import animationData from '../assets/animationData.json'; // Replace with your Lottie animation file
 import './styles.css'; // Import the CSS file with the fade-in animation
-import ContactForm from './ContactForm.jsx';//contact form jsx file imported
-
-
+import ContactForm from './ContactForm.jsx'; // Contact form jsx file imported
 
 const Main = () => {
   const videoRefs = useRef([]);
@@ -47,47 +45,65 @@ const Main = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image5} alt="VALORANT" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">VALORANT</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://playvalorant.com/" target="_blank" rel="noopener noreferrer">VALORANT</a>
+            </h2>
             <p className="text-teal-400">Exciting game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image6} alt="GOD OF WAR" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">GOD OF WAR</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://www.playstation.com/en-us/games/god-of-war/" target="_blank" rel="noopener noreferrer">GOD OF WAR</a>
+            </h2>
             <p className="text-teal-400">Thrilling game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image7} alt="GTA V" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">GTA V</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://www.rockstargames.com/gta-v" target="_blank" rel="noopener noreferrer">GTA V</a>
+            </h2>
             <p className="text-teal-400">Exciting game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image8} alt="RED DEAD REDEMPTION 2" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">RED DEAD REDEMPTION 2</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://www.rockstargames.com/reddeadredemption2" target="_blank" rel="noopener noreferrer">RED DEAD REDEMPTION 2</a>
+            </h2>
             <p className="text-teal-400">Thrilling game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image9} alt="CALL OF DUTY" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">CALL OF DUTY</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://www.callofduty.com/" target="_blank" rel="noopener noreferrer">CALL OF DUTY</a>
+            </h2>
             <p className="text-teal-400">Exciting game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image10} alt="BGMI" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">BGMI</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://www.battlegroundsmobileindia.com/" target="_blank" rel="noopener noreferrer">BGMI</a>
+            </h2>
             <p className="text-teal-400">Thrilling game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image11} alt="FIFA" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">FIFA</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://www.ea.com/games/fifa" target="_blank" rel="noopener noreferrer">FIFA</a>
+            </h2>
             <p className="text-teal-400">Exciting game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image12} alt="CS GO 2" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">CS GO 2</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://blog.counter-strike.net/" target="_blank" rel="noopener noreferrer">CS GO 2</a>
+            </h2>
             <p className="text-teal-400">Thrilling game description.</p>
           </div>
           <div className="p-5 bg-gray-800 rounded-lg">
             <img src={assets.image13} alt="FALL GUYS" className="w-full mb-4 rounded-lg" />
-            <h2 className="mb-2 text-2xl font-bold text-rose-600">FALL GUYS</h2>
+            <h2 className="mb-2 text-2xl font-bold text-rose-600">
+              <a href="https://fallguys.com/" target="_blank" rel="noopener noreferrer">FALL GUYS</a>
+            </h2>
             <p className="text-teal-400">Thrilling game description.</p>
           </div>
           {/* Add more games as needed */}
@@ -119,14 +135,16 @@ const Main = () => {
             {/* Add more slides as needed */}
           </Slider>
         </div>
-      </section>
+        </section>
 
-      {/* Contact Form */}
-      <section className="flex justify-center mt-10">
-        <ContactForm />
-      </section>
-    </main>
-  );
+{/* Contact Form */}
+<section className="flex justify-center mt-10 bg-indigo-950">
+  <ContactForm />
+</section>
+</main>
+);
 };
 
 export default Main;
+
+     

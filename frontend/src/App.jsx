@@ -11,7 +11,6 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import YourGames from './components/Yourgames';
 import Rewards from './components/Rewards';
 import Achievements from './components/Achievements';
-import YourParticipation from './components/YourParticipation';
 
 
 const App = () => {
@@ -30,7 +29,6 @@ const App = () => {
           <Route path="/yourgames" element={<YourGames/>} />
           <Route path="/rewards" element={<Rewards/>} /> {/* Add this line */}
           <Route path="/achievements" element={<Achievements/>} /> {/* Add this line */}
-          <Route path="/yourparticipation" element={<YourParticipation/>} /> {/* Add this line */}
         </Routes>
       </main>
       <Footer />
