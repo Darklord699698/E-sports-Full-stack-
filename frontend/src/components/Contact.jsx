@@ -1,11 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // For navigation
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'; // Social media icons
 import Lottie from 'lottie-react'; // Import Lottie
 import animationData4 from '../assets/animationData4.json'; // Replace with your Lottie animation file
+import axios from 'axios'; // Import axios for making HTTP requests
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    Name: '',
+    Email: '',
+    Message: ''
+  });
+  const [status, setStatus] = useState(''); // For showing submission status
   const navigate = useNavigate(); // Hook to access the navigate function
+
+  const handleChange = (e) => {
+    console.log('Input change detected:', e.target.name, e.target.value); // Debug logging
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('Submitting...');
+
+    console.log('Submitting form data:', formData); // Debug logging
+
+    try {
+      const response = await axios.post('http://localhost:4000/api/contact1', formData); // Updated URL to use new route
+      console.log('Response from server:', response.data);
+      alert('Message sent successfully!');
+      setFormData({ Name: '', Email: '', Message: '' });
+      setStatus('');
+    } catch (error) {
+      console.error('Error sending message:', error.response ? error.response.data : error.message);
+      alert('Failed to send message. Please try again.');
+      setStatus('');
+    }
+  };
 
   const handleClose = () => {
     navigate('/'); // Redirect to the home page
@@ -30,15 +64,18 @@ const Contact = () => {
           <p className="mb-6 text-gray-400">
             We would love to hear from you! Whether you have questions, feedback, or need assistance, feel free to reach out to us.
           </p>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label className="block mb-2 text-gray-300" htmlFor="name">Name</label>
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="Name" // Updated to match server field names
+                value={formData.Name}
+                onChange={handleChange}
                 className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="Your Name"
+                required
               />
             </div>
             <div>
@@ -46,26 +83,32 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="Email" // Updated to match server field names
+                value={formData.Email}
+                onChange={handleChange}
                 className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="Your Email"
+                required
               />
             </div>
             <div>
               <label className="block mb-2 text-gray-300" htmlFor="message">Message</label>
               <textarea
                 id="message"
-                name="message"
+                name="Message" // Updated to match server field names
+                value={formData.Message}
+                onChange={handleChange}
                 rows="4"
                 className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="Your Message"
+                required
               ></textarea>
             </div>
             <button
               type="submit"
               className="w-full p-3 text-white bg-teal-500 rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
-              Send Message
+              {status || 'Send Message'}
             </button>
           </form>
         </div>
