@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
 import dataRoutes from './routes/dataRoutes.js';
+import contactRoutes from './routes/contactRoutes.js'; // Import the contact routes
 
 // app config
 const app = express();
@@ -16,6 +17,7 @@ connectDB();
 
 // routes
 app.use('/api', dataRoutes);
+app.use('/api/contact', contactRoutes); // Use the contact routes
 
 app.get('/', (req, res) => {
   res.send('API WORKING');
