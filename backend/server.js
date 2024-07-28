@@ -7,7 +7,7 @@ import contact1Routes from './routes/Contact1Routes.js'; // New contact1 routes
 
 // App configuration
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json());
