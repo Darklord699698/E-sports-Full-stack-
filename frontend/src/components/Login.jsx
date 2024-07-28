@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Auth = () => {
+const Auth = ({ onLogin, isLoggedIn, username, onLogout }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
   const [name, setName] = useState('');
@@ -43,9 +43,9 @@ const Auth = () => {
 
       if (response.ok) {
         if (isLogin) {
-          // Save user info to local storage
+          // Save user info to local storage and update login state
           localStorage.setItem('user', JSON.stringify({ name: data.name })); // Adjust according to API response
-          // Redirect to home page
+          onLogin(data.name); // Call the onLogin function to update the login state
           navigate('/'); // Redirect to home page
         } else {
           // Handle successful registration, switch to login form
@@ -71,7 +71,17 @@ const Auth = () => {
         </svg>
       </button>
       <div className="relative w-full max-w-md p-8 bg-white bg-opacity-75 rounded-lg shadow-md">
-        {isLogin ? (
+        {isLoggedIn ? (
+          <div className="text-center">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">Welcome, {username}!</h2>
+            <button
+              onClick={onLogout}
+              className="w-full py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+            >
+              Logout
+            </button>
+          </div>
+        ) : isLogin ? (
           <div>
             <h2 className="mb-6 text-2xl font-bold text-gray-800">Login</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
